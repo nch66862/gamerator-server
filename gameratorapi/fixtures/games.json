@@ -1,0 +1,80 @@
+[
+    {
+        "model": "gameratorapi.Game",
+        "pk": 1,
+        "fields": {
+            "title": "Game 1",
+            "description": "Description 1",
+            "designer": "Designer 1",
+            "year_released": "2001-01-01",
+            "number_of_players": 1,
+            "time_to_play": 1,
+            "min_age_recommendation": 1
+        }
+    },
+    {
+        "model": "gameratorapi.Game",
+        "pk": 2,
+        "fields": {
+            "title": "Game 2",
+            "description": "Description 2",
+            "designer": "Designer 2",
+            "year_released": "2002-01-01",
+            "number_of_players": 2,
+            "time_to_play": 2,
+            "min_age_recommendation": 2
+        }
+    },
+    {
+        "model": "gameratorapi.Game",
+        "pk": 3,
+        "fields": {
+            "title": "Game 3",
+            "description": "Description 3",
+            "designer": "Designer 3",
+            "year_released": "2003-01-01",
+            "number_of_players": 3,
+            "time_to_play": 3,
+            "min_age_recommendation": 3
+        }
+    },
+    {
+        "model": "gameratorapi.Game",
+        "pk": 4,
+        "fields": {
+            "title": "Game 4",
+            "description": "Description 4",
+            "designer": "Designer 4",
+            "year_released": "2004-01-01",
+            "number_of_players": 4,
+            "time_to_play": 4,
+            "min_age_recommendation": 4
+        }
+    },
+    {
+        "model": "gameratorapi.Game",
+        "pk": 5,
+        "fields": {
+            "title": "Game 5",
+            "description": "Description 5",
+            "designer": "Designer 5",
+            "year_released": "2005-01-01",
+            "number_of_players": 5,
+            "time_to_play": 5,
+            "min_age_recommendation": 5
+        }
+    },
+    {
+        "model": "gameratorapi.Game",
+        "pk": 6,
+        "fields": {
+            "title": "Game 6",
+            "description": "Description 6",
+            "designer": "Designer 6",
+            "year_released": "2006-01-01",
+            "number_of_players": 6,
+            "time_to_play": 6,
+            "min_age_recommendation": 6
+        }
+    }
+]

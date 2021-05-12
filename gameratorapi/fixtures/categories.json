@@ -1,0 +1,72 @@
+[
+    {
+        "model": "gameratorapi.Category",
+        "pk": 1,
+        "fields": {
+            "category": "Strategy"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 2,
+        "fields": {
+            "category": "Dice"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 3,
+        "fields": {
+            "category": "Card"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 4,
+        "fields": {
+            "category": "Battle"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 5,
+        "fields": {
+            "category": "Miniature"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 6,
+        "fields": {
+            "category": "Deck Building"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 7,
+        "fields": {
+            "category": "Role Playing"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 8,
+        "fields": {
+            "category": "Sports"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 9,
+        "fields": {
+            "category": "Adventure"
+        }
+    },
+    {
+        "model": "gameratorapi.Category",
+        "pk": 10,
+        "fields": {
+            "category": "Cooperative"
+        }
+    }
+]
