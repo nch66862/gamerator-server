@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'gameratorapi',
 ]
 
-AUTH_USER_MODEL = "gameratorapi.models.Player"
+# AUTH_USER_MODEL = "gameratorapi.Player"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "gameratorapi", "site_static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "gameratorapi", "static")
