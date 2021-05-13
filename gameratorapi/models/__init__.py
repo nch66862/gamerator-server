@@ -3,4 +3,3 @@ from .game import Game
 from .picture import Picture
 from .player import Player
 from .review import Review
-from .game_category import GameCategory

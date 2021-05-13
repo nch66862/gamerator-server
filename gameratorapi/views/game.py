@@ -6,7 +6,7 @@ from rest_framework import status, serializers
 from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from gameratorapi.models import Player, Game, Category, GameCategory
+from gameratorapi.models import Player, Game, Category
 from django.db.models import Count, Q
 
 
@@ -23,23 +23,9 @@ class GameView(ViewSet):
         # player = Player.objects.get(user=request.auth.user)
         games = Game.objects.all()
 
-
-        gamesResult = []
-        for game in games:
-            categories = GameCategory.objects.filter(game=game)
-            gameSerialized = GameSerializer(game, context={'request': request})
-            gameDictionary = gameSerialized.data
-            listOfCategories = []
-            for category in categories:
-                categorySerialized = CategorySerializer(category, context={'request': request})
-                categoryDictionary = categorySerialized.data
-                listOfCategories.append(categoryDictionary)
-            gameDictionary['categories'] = listOfCategories
-            gamesResult.append(gameDictionary)
-        return Response(gamesResult)
-
         serializer = GameSerializer(
             games, many=True, context={'request': request})
+        return Response(serializer.data)
 
     def retrieve(self, request, pk):
         """Handle GET requests for single game
