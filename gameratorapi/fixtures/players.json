@@ -1,0 +1,18 @@
+[
+    {
+        "model": "gameratorapi.player",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "catch_phrase": "Catch Phrase 1"
+        }
+    },
+    {
+        "model": "gameratorapi.player",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "catch_phrase": "Catch Phrase 2"
+        }
+    }
+]
