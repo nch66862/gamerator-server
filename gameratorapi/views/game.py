@@ -23,8 +23,7 @@ class GameView(ViewSet):
         # player = Player.objects.get(user=request.auth.user)
         games = Game.objects.all()
 
-        serializer = GameSerializer(
-            games, many=True, context={'request': request})
+        serializer = GameSerializer(games, many=True, context={'request': request})
         return Response(serializer.data)
 
     def retrieve(self, request, pk):
