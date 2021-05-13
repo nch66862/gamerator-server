@@ -72,11 +72,13 @@ class GameView(ViewSet):
         game.time_to_play = request.data["timeToPlay"]
         game.min_age_recommendation = request.data["minAgeRecommendation"]
 
-        categories = request.data["categories"]
-        game.gametype = gametype
+
 
         try:
             game.save()
+            categories = request.data["categories"]
+            for category in categories:
+                game.categories.add(category)
             serializer = GameSerializer(game, context={'request': request})
             return Response(serializer.data)
         except ValidationError as ex:
@@ -88,7 +90,7 @@ class GameSerializer(serializers.ModelSerializer):
     """JSON serializer for games"""
     class Meta:
         model = Game
-        fields = ('id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'min_age_recommendation')
+        fields = ('id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'min_age_recommendation', 'categories')
 
 class CategorySerializer(serializers.ModelSerializer):
     """JSON serializer for games"""
