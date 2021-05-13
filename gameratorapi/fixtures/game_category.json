@@ -1,0 +1,18 @@
+[
+    {
+        "model": "gameratorapi.GameCategory",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "gameratorapi.GameCategory",
+        "pk": 2,
+        "fields": {
+            "game": 1,
+            "category": 1
+        }
+    }
+]

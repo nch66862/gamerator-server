@@ -6,7 +6,7 @@ from rest_framework import status, serializers
 from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from gameratorapi.models import Player, Game
+from gameratorapi.models import Player, Game, Category, GameCategory
 from django.db.models import Count, Q
 
 
@@ -23,9 +23,23 @@ class GameView(ViewSet):
         # player = Player.objects.get(user=request.auth.user)
         games = Game.objects.all()
 
+
+        gamesResult = []
+        for game in games:
+            categories = GameCategory.objects.filter(game=game)
+            gameSerialized = GameSerializer(game, context={'request': request})
+            gameDictionary = gameSerialized.data
+            listOfCategories = []
+            for category in categories:
+                categorySerialized = CategorySerializer(category, context={'request': request})
+                categoryDictionary = categorySerialized.data
+                listOfCategories.append(categoryDictionary)
+            gameDictionary['categories'] = listOfCategories
+            gamesResult.append(gameDictionary)
+        return Response(gamesResult)
+
         serializer = GameSerializer(
             games, many=True, context={'request': request})
-        return Response(serializer.data)
 
     def retrieve(self, request, pk):
         """Handle GET requests for single game
@@ -42,9 +56,42 @@ class GameView(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
+    def create(self, request):
+        """Handle POST operations
+
+        Returns:
+            Response -- JSON serialized game instance
+        """
+
+        game = Game()
+        game.title = request.data["title"]
+        game.description = request.data["description"]
+        game.designer = request.data["designer"]
+        game.year_released = request.data["yearReleased"]
+        game.number_of_players = request.data["numberOfPlayers"]
+        game.time_to_play = request.data["timeToPlay"]
+        game.min_age_recommendation = request.data["minAgeRecommendation"]
+
+        categories = request.data["categories"]
+        game.gametype = gametype
+
+        try:
+            game.save()
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 class GameSerializer(serializers.ModelSerializer):
     """JSON serializer for games"""
     class Meta:
         model = Game
         fields = ('id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'min_age_recommendation')
+
+class CategorySerializer(serializers.ModelSerializer):
+    """JSON serializer for games"""
+    class Meta:
+        model = Category
+        fields = ('id', 'category')
