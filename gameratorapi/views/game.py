@@ -27,6 +27,22 @@ class GameView(ViewSet):
             games, many=True, context={'request': request})
         return Response(serializer.data)
 
+    def retrieve(self, request, pk):
+        """Handle GET requests for single game
+
+        Returns:
+            Response -- JSON serialized game instance
+        """
+        try:
+            game = Game.objects.get(pk=pk)
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data)
+        except Game.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+
+
 class GameSerializer(serializers.ModelSerializer):
     """JSON serializer for games"""
     class Meta:
