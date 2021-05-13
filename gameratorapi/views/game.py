@@ -85,15 +85,16 @@ class GameView(ViewSet):
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-class GameSerializer(serializers.ModelSerializer):
-    """JSON serializer for games"""
-    class Meta:
-        model = Game
-        fields = ('id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'min_age_recommendation', 'categories')
-
 class CategorySerializer(serializers.ModelSerializer):
     """JSON serializer for games"""
     class Meta:
         model = Category
         fields = ('id', 'category')
+
+class GameSerializer(serializers.ModelSerializer):
+    """JSON serializer for games"""
+    categories = CategorySerializer(many=True)
+
+    class Meta:
+        model = Game
+        fields = ('id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'time_to_play', 'min_age_recommendation', 'categories')
